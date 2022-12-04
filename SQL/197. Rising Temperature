@@ -1,0 +1,10 @@
+Link:
+https://leetcode.com/problems/rising-temperature/
+
+Solution:
+
+select id
+from (select *, lag(temperature) over (order by recordDate) prev_temp,
+    lag(recordDate) over (order by recordDate) prev_date
+    from weather) as t
+where temperature>prev_temp and datediff(recordDate,prev_date)=1

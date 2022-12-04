@@ -1,0 +1,19 @@
+Link:
+https://leetcode.com/problems/how-many-numbers-are-smaller-than-the-current-number/
+
+Solution:
+
+class Solution:
+    def smallerNumbersThanCurrent(self, nums: List[int]) -> List[int]:
+        j=0
+        a=0
+        ans=[]
+        for i in range(0,len(nums)):
+          while j<=len(nums)-1:
+              if nums[i]>nums[j]:
+                  a+=1
+              j+=1
+          j=0
+          ans.append(a)
+          a = 0
+        return ans

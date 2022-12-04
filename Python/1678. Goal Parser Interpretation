@@ -1,0 +1,15 @@
+Link:
+https://leetcode.com/problems/goal-parser-interpretation/
+
+Solution:
+
+import re
+class Solution:
+    def interpret(self, command: str) -> str:
+        dic = ['()']
+        dic_one = ['(al)']
+        for char in dic:
+            for char_one in dic_one:
+                command = command.replace(char,'o')
+                command = command.replace(char_one,'al')
+        return command

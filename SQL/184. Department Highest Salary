@@ -1,0 +1,17 @@
+Link:
+https://leetcode.com/problems/department-highest-salary/
+
+Solution:
+
+select Employee, Department, Salary
+from(
+select e.id, e.name as Employee, e.salary, e.departmentid, d.name as Department
+from employee e
+left join Department d on e.departmentid = d.id
+) tab1
+where (salary, departmentid) in
+(
+    select max(salary) as salary, departmentid
+    from employee
+    group by departmentid
+)

@@ -1,0 +1,13 @@
+Link:
+https://leetcode.com/problems/second-highest-salary/
+
+Solution:
+
+select if(count(salary)>1, min(salary), '') as SecondHighestSalary
+from (
+select distinct salary
+from employee
+group by salary
+order by salary desc
+limit 2
+) tab

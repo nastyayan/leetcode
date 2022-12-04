@@ -1,0 +1,15 @@
+Link:
+https://leetcode.com/problems/decode-xored-array/
+
+Solution:
+
+class Solution:
+    def decode(self, encoded: List[int], first: int) -> List[int]:
+        ans = []
+        ans.append(first)
+        for i in range(0, len(encoded)):
+            if i==0:
+                ans.append(encoded[i] ^ first)
+            else:
+                ans.append(encoded[i] ^ ans[i])
+        return ans

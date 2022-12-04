@@ -1,0 +1,11 @@
+Link:
+https://leetcode.com/problems/capital-gainloss/
+
+Solution:
+
+select stock_name, sum(flow) as capital_gain_loss
+from (
+select stock_name, operation, if(operation='Sell', price, -price) as flow
+from stocks
+) tab
+group by stock_name

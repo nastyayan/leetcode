@@ -1,0 +1,15 @@
+Link:
+https://leetcode.com/problems/human-traffic-of-stadium/
+
+Solution:
+
+select id, visit_date, people
+from (
+select *, if(id-lag(id) over (order by id)=1 and id-lag(id,2) over (order by id)=2 or lead(id) over (order by id)-id=1 and lead(id,2) over (order by id)-id=2 or id-lag(id) over (order by id)=1 and lead(id) over (order by id)-id=1, id, null) as new_lag
+from (
+select *
+from stadium
+where people>=100
+) tab1
+) tab2
+where new_lag is not null

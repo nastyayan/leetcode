@@ -1,0 +1,12 @@
+Link:
+https://leetcode.com/problems/minimum-sum-of-four-digit-number-after-splitting-digits/
+
+Solution:
+
+class Solution:
+    def minimumSum(self, num: int) -> int:
+        st = list(str(num))
+        st = sorted(st)
+        min1 = int(str(st[0])+str(st[2]))
+        min2 = int(str(st[1])+str(st[3]))
+        return min1+min2

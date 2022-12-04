@@ -1,0 +1,21 @@
+Link:
+https://leetcode.com/problems/decode-the-message/
+
+Solution:
+
+class Solution:
+    def decodeMessage(self, key: str, message: str) -> str:
+        key = list(key.replace(' ',''))
+        auxiliaryList = []
+        for word in key:
+            if word not in auxiliaryList:
+                auxiliaryList.append(word)
+        password = list(string.ascii_lowercase)
+        dictionary = dict(zip(auxiliaryList, password))
+        converted_data = ''
+        for i in range(0, len(message)):
+            if message[i] in dictionary.keys():
+                converted_data += dictionary[message[i]]
+            else:
+                converted_data += message[i]
+        return converted_data

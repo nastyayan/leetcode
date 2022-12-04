@@ -1,0 +1,12 @@
+Link:
+https://leetcode.com/problems/department-top-three-salaries/
+
+Solution:
+
+select Department, Employee, Salary
+from (
+select d.name as Department, e.name as Employee, e.salary as Salary, dense_rank() over (partition by d.name order by salary desc) as place
+from employee e
+left join department d on e.departmentId = d.id
+) tab
+where place in (1,2,3)

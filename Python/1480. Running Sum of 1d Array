@@ -1,0 +1,13 @@
+Link:
+https://leetcode.com/problems/running-sum-of-1d-array/
+
+Solution:
+
+class Solution:
+    def runningSum(self, nums: List[int]) -> List[int]:
+        for i in range(0,len(nums)):
+            if i==0:
+                nums[0]
+            else:
+                nums[i] = nums[i]+nums[i-1]
+        return nums

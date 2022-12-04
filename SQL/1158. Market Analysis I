@@ -1,0 +1,13 @@
+Link:
+https://leetcode.com/problems/market-analysis-i/
+
+Solution:
+
+select u.user_id as buyer_id, u.join_date, if(tab.orders_in_2019 is null, 0, tab.orders_in_2019) as orders_in_2019
+from users u
+left join (
+select buyer_id, count(buyer_id) as orders_in_2019
+from orders
+where year(order_date)>2018
+group by buyer_id
+) tab on u.user_id = tab.buyer_id

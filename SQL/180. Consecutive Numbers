@@ -1,0 +1,14 @@
+Link:
+https://leetcode.com/problems/consecutive-numbers/
+
+Solution:
+
+SELECT distinct num as ConsecutiveNums
+from(
+SELECT *, total + lag(total) over (order by id) as new_total
+from (
+SELECT *, if(num - lag(num) OVER (ORDER BY Id)=0, +1, 0) as total
+FROM logs
+) tab
+) tab_1
+where new_total>=2

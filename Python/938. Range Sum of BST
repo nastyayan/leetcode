@@ -1,0 +1,25 @@
+Link:
+https://leetcode.com/problems/range-sum-of-bst/
+
+Solution:
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+import re
+
+class Solution:
+    def rangeSumBST(self, root: Optional[TreeNode], low: int, high: int) -> int:
+        root = str(root)
+        root = re.sub("[^0-9]", " ", root)
+        root = re.sub(r'\s+', ' ', root)
+        root = root[1:]
+        root = [int(k) for k in root.split()]
+        sum = 0
+        for i in range(0,len(root)):
+            if root[i] in range(low, high+1):
+                sum = sum + root[i]
+        return sum

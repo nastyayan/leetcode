@@ -1,0 +1,17 @@
+Link:
+https://leetcode.com/problems/exchange-seats/
+
+Solution:
+
+select changed as id, student
+from (
+select *, if(row_num in (select max(id) from seat) and row_num%2=1, row_num, 
+                case when row_num%2=1 then row_num+1
+                else row_num-1
+                end) as changed
+from (
+select id, student, ROW_NUMBER() OVER(order BY id) AS row_num
+from seat
+) tab
+order by changed
+) as new_tab

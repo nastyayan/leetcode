@@ -1,0 +1,16 @@
+Link:
+https://leetcode.com/problems/nth-highest-salary/
+
+Solution:
+
+CREATE FUNCTION getNthHighestSalary(N INT) RETURNS INT
+BEGIN
+  RETURN (
+      select distinct salary
+      from (
+        select *, dense_rank() over (order by salary desc) as place
+        from employee
+      ) tab
+      where place = N   
+  );
+END

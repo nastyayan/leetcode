@@ -1,0 +1,48 @@
+Link:
+https://leetcode.com/problems/trips-and-users/
+Ugly but beats 99.92 percent of runtime!*
+
+Solution:
+
+select *
+from (
+select Day, round(
+    case
+    when cancelled is null then 0/total
+    else cancelled/total
+    end
+    ,2) as "Cancellation Rate"
+from (
+(
+select request_at, count(status) as cancelled 
+from trips
+where status like 'ca%' and client_id not in (
+    select users_id
+    from users
+    where banned = 'Yes'
+)
+and driver_id not in (
+    select users_id
+    from users
+    where banned = 'Yes'
+)
+group by request_at
+) tab
+right join (
+select request_at as Day, count(status) as total 
+from trips
+where client_id not in (
+    select users_id
+    from users
+    where banned = 'Yes'
+)
+and driver_id not in (
+    select users_id
+    from users
+    where banned = 'Yes'
+)
+group by request_at
+) tab_1 on tab.request_at = tab_1.day
+)
+) tab_2
+where day between "2013-10-01" and "2013-10-03"

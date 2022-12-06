@@ -1,0 +1,43 @@
+Link:
+https://leetcode.com/problems/check-if-the-sentence-is-pangram/description/
+
+Description:
+
+A pangram is a sentence where every letter of the English alphabet appears at least once.
+
+Given a string sentence containing only lowercase English letters, return true if sentence is a pangram, or false otherwise.
+
+ 
+
+Example 1:
+
+Input: sentence = "thequickbrownfoxjumpsoverthelazydog"
+Output: true
+Explanation: sentence contains at least one of every letter of the English alphabet.
+Example 2:
+
+Input: sentence = "leetcode"
+Output: false
+ 
+
+Constraints:
+
+1 <= sentence.length <= 1000
+sentence consists of lowercase English letters.
+
+Solution:
+
+class Solution:
+    def checkIfPangram(self, sentence: str) -> bool:
+        sentence = list(sentence)
+        for i in range(ord('a'), ord('z')+1):
+            if len(sentence)<26:
+                return False
+                break
+            test = sentence.count(chr(i))
+            if test==0:
+                a = False
+                break
+            else:
+                a = True
+        return a

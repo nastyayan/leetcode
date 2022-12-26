@@ -35,7 +35,6 @@ Solution:
 class Solution:
     def countGoodRectangles(self, rectangles: List[List[int]]) -> int:
         ans=[]
-        count=0
         for i in range(len(rectangles)):
             ans.append(min(rectangles[i]))
         return ans.count(max(ans))

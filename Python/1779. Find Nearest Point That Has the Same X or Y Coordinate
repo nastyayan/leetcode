@@ -33,6 +33,8 @@ Constraints:
 points[i].length == 2
 1 <= x, y, ai, bi <= 104
 
+BEATS 93.18%!
+
 Solution:
 class Solution:
     def nearestValidPoint(self, x: int, y: int, points: List[List[int]]) -> int:

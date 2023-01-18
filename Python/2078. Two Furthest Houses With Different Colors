@@ -42,6 +42,8 @@ n == colors.length
 0 <= colors[i] <= 100
 Test data are generated such that at least two houses have different colors.
 
+BEATS 94.99% MEMORY!
+
 Solution:
 class Solution:
     def maxDistance(self, colors: List[int]) -> int:

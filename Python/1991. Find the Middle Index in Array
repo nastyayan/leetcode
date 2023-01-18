@@ -36,6 +36,8 @@ Constraints:
 1 <= nums.length <= 100
 -1000 <= nums[i] <= 1000
 
+BEATS SPEED - 95.76% AND MEMORY - 96.14%! 
+
 Solution:
 class Solution:
     def findMiddleIndex(self, nums: List[int]) -> int:

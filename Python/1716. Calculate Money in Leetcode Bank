@@ -31,6 +31,8 @@ Constraints:
 
 1 <= n <= 1000
 
+BEATS 98.15% RUNTIME!
+
 Solution:
 class Solution:
     def totalMoney(self, n: int) -> int:

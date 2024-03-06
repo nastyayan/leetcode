@@ -1,0 +1,9 @@
+class Solution:
+    def numberGame(self, nums: List[int]) -> List[int]:
+        nums=sorted(nums)
+        arr=[]
+        while len(nums)>0:
+            x=[nums[1], nums[0]]
+            arr.extend(x)
+            del nums[0:2]
+        return arr

@@ -1,0 +1,5 @@
+class Solution:
+    def maximumOddBinaryNumber(self, s: str) -> str:
+        s1=[i for i in s if i=='1']
+        s2=[i for i in s if i=='0']
+        return(''.join([s1[0]]+s2+s1[1:])[::-1])

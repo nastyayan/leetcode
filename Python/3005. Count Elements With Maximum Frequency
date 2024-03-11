@@ -1,0 +1,6 @@
+class Solution:
+    def maxFrequencyElements(self, nums: List[int]) -> int:
+        arr=[]
+        for i in range(len(nums)):
+            arr.append(nums.count(nums[i]))
+        return(arr.count(max(arr)))

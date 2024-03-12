@@ -1,0 +1,6 @@
+import itertools
+class Solution:
+    def buyChoco(self, prices: List[int], money: int) -> int:
+        prices=list(itertools.combinations(prices, 2))
+        prices=[sum(i) for i in prices]
+        return(money - min(prices) if money - min(prices)>=0 else money)

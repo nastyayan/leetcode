@@ -1,0 +1,13 @@
+class Solution:
+    def findMissingAndRepeatedValues(self, grid: List[List[int]]) -> List[int]:
+        arr=[]
+        a=0
+        b=0
+        for i in range(len(grid)):
+            arr.extend(grid[i])
+        for i in range(1,len(grid)**2+1):
+            if i not in arr:
+                a=i
+            if arr.count(i)>1:
+                b=i
+        return([b,a])

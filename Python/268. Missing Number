@@ -1,0 +1,8 @@
+class Solution:
+    def missingNumber(self, nums: List[int]) -> int:
+        a=-1
+        arr=list(range(0,max(nums)+1))
+        for i in range(len(arr)):
+            if arr[i] not in nums:
+                a=arr[i]
+        return max(nums)+1 if a==-1 else a

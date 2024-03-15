@@ -1,0 +1,17 @@
+class Solution:
+    def modifiedMatrix(self, matrix: List[List[int]]) -> List[List[int]]:
+        arr=[]
+        arr1=[]
+        for j in range(len(matrix[0])):
+            if len(arr)>0:
+                arr1.append(arr)
+                arr=[]
+            for i in range(len(matrix)):
+                arr.append(matrix[i][j])
+        arr1.append(arr)
+        arr1=[max(i) for i in arr1]
+        for i in range(len(matrix)):
+            for j in range(len(matrix[0])):
+                if matrix[i][j]==-1:
+                    matrix[i][j]=arr1[j]
+        return(matrix)

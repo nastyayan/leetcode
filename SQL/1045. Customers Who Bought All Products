@@ -1,0 +1,13 @@
+-- Write your PostgreSQL query statement below
+select customer_id
+from
+(
+select customer_id, count(*) as a
+from
+(
+select distinct customer_id, product_key
+from Customer
+) 
+group by customer_id
+)
+where a = (select count(*) from product)

@@ -1,0 +1,10 @@
+-- Write your PostgreSQL query statement below
+select person_name
+from
+(
+select q.*, Sum(weight)OVER(ORDER BY turn) as a
+from queue q
+order by turn desc
+)
+where a<=1000
+limit 1

@@ -1,0 +1,9 @@
+-- Write your PostgreSQL query statement below
+select b.contest_id, round(b.c/(select count(*) from users)*100,2) as percentage
+from
+(
+select contest_id,  cast(count(*) as decimal(7,2)) as c
+from register
+group by contest_id
+) b
+order by percentage desc, contest_id 

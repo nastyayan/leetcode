@@ -1,0 +1,9 @@
+select DATE_FORMAT(trans_date, '%Y-%m') month,
+country,
+count(id) trans_count,
+count(case when state='approved' then id end) approved_count,
+sum(amount) trans_total_amount,
+coalesce(sum(case when state='approved' then amount end),0)
+approved_total_amount
+from transactions
+group by month, country

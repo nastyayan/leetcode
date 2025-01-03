@@ -1,0 +1,19 @@
+select category, coalesce(count(account_id),0) accounts_count
+from
+(
+select account_id, income,
+case when income<20000 then 'Low Salary'
+when income>50000 then 'High Salary'
+else 'Average Salary'
+end as category
+from accounts
+) a
+right join
+(
+select 'Low Salary' category
+union all
+select 'Average Salary' category
+union all
+select 'High Salary' category
+) b using(category)
+group by category

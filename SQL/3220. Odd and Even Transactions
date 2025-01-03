@@ -1,0 +1,7 @@
+Solution:
+select transaction_date,
+coalesce(sum(case when amount%2<>0 then amount end),0) odd_sum,
+coalesce(sum(case when amount%2=0 then amount end),0) even_sum
+from transactions
+group by transaction_date
+order by transaction_date

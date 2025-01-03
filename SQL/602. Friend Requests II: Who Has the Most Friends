@@ -1,0 +1,15 @@
+Solution:
+select requester_id id, sum(friend) num
+from
+(
+select requester_id, count(accepter_id) friend
+from requestaccepted
+group by requester_id
+union all
+select accepter_id, count(requester_id) friend
+from requestaccepted
+group by accepter_id
+) a
+group by requester_id
+order by num desc
+limit 1
